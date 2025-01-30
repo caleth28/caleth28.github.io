@@ -1,5 +1,5 @@
 const API_KEY = "AIzaSyD2fhGnll5_PtVIY3TJm5rKY4OC0Cx-GLw"; // Tu API Key
-const DOCUMENT_ID = "TU_DOCUMENT_ID"; // Reemplaza con el ID de tu documento de Google Docs
+const DOCUMENT_ID = "1JTz2S9YV14ae3GbWQ_jE_pt4SSfGkXEWNumn608fOn8"; // ID del documento de Google Docs
 
 function cargarHimnosDesdeGoogleDocs() {
     const url = `https://docs.googleapis.com/v1/documents/${DOCUMENT_ID}?key=${API_KEY}`;
@@ -7,7 +7,6 @@ function cargarHimnosDesdeGoogleDocs() {
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            // Extrae el contenido del documento
             const contenido = data.body.content;
             let html = "";
 
@@ -18,11 +17,9 @@ function cargarHimnosDesdeGoogleDocs() {
                 }
             });
 
-            // Inserta el contenido en la página
             document.querySelector(".container").innerHTML = html;
         })
         .catch(error => console.error("Error al cargar el documento:", error));
 }
 
-// Cargar los himnos al iniciar la página
 document.addEventListener("DOMContentLoaded", cargarHimnosDesdeGoogleDocs);
