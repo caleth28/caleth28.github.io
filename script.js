@@ -1,38 +1,34 @@
-const API_KEY = "AIzaSyD2fhGnll5_PtVIY3TJm5rKY4OC0Cx-GLw"; // Tu API Key
-const DOCUMENT_ID = "1JTz2S9YV14ae3GbWQ_jE_pt4SSfGkXEWNumn608fOn8"; // ID del documento
+const himnos = [
+    {
+        titulo: "Más Allá del Sol",
+        letra: "Aunque en esta vida no tengo riquezas...\nMás allá del sol..."
+    },
+    {
+        titulo: "Sublime Gracia",
+        letra: "Sublime gracia del Señor...\nQue a mí pecador..."
+    }
+];
 
-function cargarHimnosDesdeGoogleDocs() {
-    const url = `https://docs.googleapis.com/v1/documents/${DOCUMENT_ID}?key=${API_KEY}`;
-    
-    console.log("Conectando a la API de Google Docs...");
-    console.log("URL:", url);
-
-    fetch(url)
-        .then(response => {
-            console.log("Respuesta del servidor:", response);
-            if (!response.ok) {
-                throw new Error(`Error al acceder al documento: ${response.statusText}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Datos del documento:", data);
-            const contenido = data.body.content;
-            let html = "";
-
-            contenido.forEach(element => {
-                if (element.paragraph && element.paragraph.elements) {
-                    const texto = element.paragraph.elements.map(e => e.textRun ? e.textRun.content : "").join("");
-                    html += `<p>${texto}</p>`;
-                }
-            });
-
-            document.querySelector(".container").innerHTML = html;
-        })
-        .catch(error => {
-            console.error("Error al cargar el documento:", error);
-            document.querySelector(".container").innerHTML = `<p>Error al cargar los himnos. Revisa la consola para más detalles.</p>`;
-        });
+function mostrarHimno(index) {
+    const himno = himnos[index];
+    const container = document.querySelector(".container");
+    container.innerHTML = `
+        <h2>${himno.titulo}</h2>
+        <p>${himno.letra.replace(/\n/g, "<br>")}</p>
+        <button onclick="volverAlIndice()">Volver al índice</button>
+    `;
 }
 
-document.addEventListener("DOMContentLoaded", cargarHimnosDesdeGoogleDocs);
+function volverAlIndice() {
+    const container = document.querySelector(".container");
+    container.innerHTML = `
+        <h1>Himnario Online</h1>
+        <ul class="himno-list">
+            ${himnos.map((himno, index) => `
+                <li onclick="mostrarHimno(${index})">${himno.titulo}</li>
+            `).join('')}
+        </ul>
+    `;
+}
+
+document.addEventListener("DOMContentLoaded", volverAlIndice);
