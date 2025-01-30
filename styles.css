@@ -61,3 +61,10 @@ button {
 button:hover {
     background-color: #7b1fa2;
 }
+
+
+p {
+    text-align: center;
+    line-height: 1.6; /* Esto mejora la legibilidad */
+    margin: 10px 0;   /* Añade espacio entre los párrafos */
+}
