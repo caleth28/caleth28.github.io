@@ -1,76 +1,89 @@
 /* General Body Styling */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #fdf8f4; /* Fondo cálido */
+    background-color: #f5f5f5; /* Fondo moderno */
     color: #333;
+    line-height: 1.6;
 }
 
 /* Header Styling */
 header {
-    background-color: #ff7043; /* Color cálido (naranja) */
+    background-color: #6200ea; /* Color morado moderno */
     color: white;
-    padding: 20px;
     text-align: center;
-    font-size: 1.5rem;
+    padding: 20px;
+    font-size: 1.8rem;
     font-weight: bold;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
 /* Container Styling */
 .container {
-    max-width: 1200px;
-    margin: 20px auto;
+    max-width: 900px;
+    margin: 30px auto;
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
 
-/* Himno Card Styling */
+/* Card Styling */
 .card {
-    background: white;
-    border-radius: 12px;
+    background-color: white;
+    border-radius: 12px; /* Bordes redondeados */
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra moderna */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px); /* Efecto de elevación */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 /* Título del Himno */
 .card h2 {
-    margin: 0 0 10px;
-    color: #ff7043;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    color: #6200ea; /* Color morado */
+    margin-bottom: 10px;
 }
 
-/* Letras del Himno */
+/* Texto del Himno */
 .card p {
-    margin: 0 0 15px;
-    line-height: 1.6;
-    text-align: left; /* Alineado a la izquierda */
+    font-size: 1.1rem;
+    color: #555;
+    margin: 10px 0;
+    line-height: 1.8;
+    text-align: center; /* Centrar letra */
 }
 
 /* Botón */
-.card button {
+button {
     display: block;
     width: 100%;
-    padding: 10px 20px;
-    background-color: #ff7043;
+    padding: 12px;
+    background-color: #6200ea;
     color: white;
     border: none;
     border-radius: 8px;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.card button:hover {
-    background-color: #ff8a65;
+button:hover {
+    background-color: #7c4dff;
+    transform: scale(1.05); /* Zoom ligero */
+}
+
+/* Footer Styling */
+footer {
+    background-color: #6200ea;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
 }
