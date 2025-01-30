@@ -1,13 +1,23 @@
-const himnos = [
-    {
-        titulo: "Más Allá del Sol",
-        letra: "Aunque en esta vida no tengo riquezas...\nMás allá del sol..."
-    },
-    {
-        titulo: "Sublime Gracia",
-        letra: "Sublime gracia del Señor...\nQue a mí pecador..."
-    }
-];
+let himnos = []; // Almacenará los himnos cargados desde el JSON
+
+// Función para cargar los himnos desde un archivo JSON
+function cargarHimnos() {
+    fetch("himnos.json")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("No se pudo cargar el archivo de himnos.");
+            }
+            return response.json();
+        })
+        .then(data => {
+            himnos = data; // Guarda los himnos en la variable global
+            volverAlIndice(); // Genera el índice con los himnos cargados
+        })
+        .catch(error => {
+            console.error("Error al cargar los himnos:", error);
+            document.querySelector(".container").innerHTML = `<p>Error al cargar los himnos.</p>`;
+        });
+}
 
 function mostrarHimno(index) {
     const himno = himnos[index];
@@ -31,4 +41,5 @@ function volverAlIndice() {
     `;
 }
 
-document.addEventListener("DOMContentLoaded", volverAlIndice);
+// Cargar los himnos al cargar la página
+document.addEventListener("DOMContentLoaded", cargarHimnos);
