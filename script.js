@@ -1,45 +1,46 @@
-let himnos = []; // Almacenará los himnos cargados desde el JSON
+const himnos = [
+    {
+        titulo: "Más Allá del Sol",
+        letra: "Aunque en esta vida\nNo tengo riquezas\nSé qué allá en la gloria\nTengo mi mansión..."
+    },
+    {
+        titulo: "Sublime Gracia",
+        letra: "Sublime gracia del Señor\nQue a un pecador salvó...\nFui ciego mas hoy veo yo..."
+    },
+    {
+        titulo: "Cuan Grande es Él",
+        letra: "Señor mi Dios, al contemplar los cielos\nEl firmamento y las estrellas brillar..."
+    }
+];
 
-// Función para cargar los himnos desde un archivo JSON
 function cargarHimnos() {
-    fetch("himnos.json")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("No se pudo cargar el archivo de himnos.");
-            }
-            return response.json();
-        })
-        .then(data => {
-            himnos = data; // Guarda los himnos en la variable global
-            volverAlIndice(); // Genera el índice con los himnos cargados
-        })
-        .catch(error => {
-            console.error("Error al cargar los himnos:", error);
-            document.querySelector(".container").innerHTML = `<p>Error al cargar los himnos.</p>`;
-        });
+    const container = document.querySelector(".container");
+
+    himnos.forEach((himno, index) => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        card.innerHTML = `
+            <h2>${himno.titulo}</h2>
+            <p>${himno.letra.split("\n").slice(0, 2).join("<br>")}...</p> <!-- Muestra un resumen -->
+            <button onclick="mostrarHimno(${index})">Ver Himno</button>
+        `;
+
+        container.appendChild(card);
+    });
 }
 
 function mostrarHimno(index) {
+    const container = document.querySelector(".container");
     const himno = himnos[index];
-    const container = document.querySelector(".container");
+
     container.innerHTML = `
-        <h2>${himno.titulo}</h2>
-        <p>${himno.letra.replace(/\n/g, "<br>")}</p>
-        <button onclick="volverAlIndice()">Volver al índice</button>
+        <div class="card">
+            <h2>${himno.titulo}</h2>
+            <p>${himno.letra.replace(/\n/g, "<br>")}</p>
+            <button onclick="cargarHimnos()">Volver</button>
+        </div>
     `;
 }
 
-function volverAlIndice() {
-    const container = document.querySelector(".container");
-    container.innerHTML = `
-        <h1>Himnario Online</h1>
-        <ul class="himno-list">
-            ${himnos.map((himno, index) => `
-                <li onclick="mostrarHimno(${index})">${himno.titulo}</li>
-            `).join('')}
-        </ul>
-    `;
-}
-
-// Cargar los himnos al cargar la página
 document.addEventListener("DOMContentLoaded", cargarHimnos);
