@@ -5,7 +5,7 @@ const himnos = [
 No tengo riquezas
 Sé qué allá en la gloria
 Tengo mi mansión...
-        
+
 Más allá del Sol
 Más allá del Sol
 Yo tengo un hogar, bello hogar,
@@ -36,9 +36,12 @@ function cargarHimnos() {
         card.classList.add("card");
 
         card.innerHTML = `
-            <h2>${himno.titulo}</h2>
-            <p>${himno.letra.split("\n").slice(0, 2).join("<br>")}...</p> <!-- Resumen -->
-            <button onclick="mostrarHimno(${index})">Leer más</button>
+            <div class="numero">${index + 1}</div>
+            <div class="contenido">
+                <h2>${himno.titulo}</h2>
+                <p>${himno.letra.split("\n").slice(0, 2).join("<br>")}...</p> <!-- Resumen -->
+                <button onclick="mostrarHimno(${index})">Leer más</button>
+            </div>
         `;
 
         container.appendChild(card);
@@ -51,9 +54,12 @@ function mostrarHimno(index) {
 
     container.innerHTML = `
         <div class="card">
-            <h2>${himno.titulo}</h2>
-            <p>${himno.letra.replace(/\n/g, "<br>")}</p>
-            <button onclick="cargarHimnos()">Volver</button>
+            <div class="numero">${index + 1}</div>
+            <div class="contenido">
+                <h2>${himno.titulo}</h2>
+                <p>${himno.letra.replace(/\n/g, "<br>")}</p>
+                <button onclick="cargarHimnos()">Volver</button>
+            </div>
         </div>
     `;
 }
