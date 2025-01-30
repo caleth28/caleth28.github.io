@@ -4,14 +4,19 @@ const DOCUMENT_ID = "1JTz2S9YV14ae3GbWQ_jE_pt4SSfGkXEWNumn608fOn8"; // ID del do
 function cargarHimnosDesdeGoogleDocs() {
     const url = `https://docs.googleapis.com/v1/documents/${DOCUMENT_ID}?key=${API_KEY}`;
     
+    console.log("Conectando a la API de Google Docs...");
+    console.log("URL:", url);
+
     fetch(url)
         .then(response => {
+            console.log("Respuesta del servidor:", response);
             if (!response.ok) {
-                throw new Error("Error al acceder al documento: " + response.statusText);
+                throw new Error(`Error al acceder al documento: ${response.statusText}`);
             }
             return response.json();
         })
         .then(data => {
+            console.log("Datos del documento:", data);
             const contenido = data.body.content;
             let html = "";
 
