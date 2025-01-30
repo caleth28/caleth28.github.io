@@ -3,80 +3,74 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9fb; /* Fondo suave */
+    background-color: #fdf8f4; /* Fondo cálido */
     color: #333;
 }
 
 /* Header Styling */
 header {
-    background-color: #4a148c; /* Un morado más moderno */
+    background-color: #ff7043; /* Color cálido (naranja) */
     color: white;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Himnario Container */
+/* Container Styling */
 .container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Himno Card Styling */
+.card {
     background: white;
-    border-radius: 12px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra moderna */
-    text-align: center; /* Centrar contenido */
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Lista de Himnos */
-.himno-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.himno-list li {
-    padding: 15px;
-    margin: 8px 0;
-    background-color: #e0e0e0; /* Fondo gris claro */
-    border-radius: 8px; /* Bordes redondeados */
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+/* Título del Himno */
+.card h2 {
+    margin: 0 0 10px;
+    color: #ff7043;
+    font-size: 1.2rem;
 }
 
-.himno-list li:hover {
-    background-color: #d1c4e9; /* Morado claro al pasar el ratón */
-    transform: scale(1.02); /* Efecto ligero de zoom */
+/* Letras del Himno */
+.card p {
+    margin: 0 0 15px;
+    line-height: 1.6;
+    text-align: left; /* Alineado a la izquierda */
 }
 
-/* Título de Himno */
-h2 {
-    color: #4a148c; /* Color morado */
-    margin-bottom: 20px;
-}
-
-/* Himno Letras */
-p {
-    text-align: center; /* Centrar texto */
-    line-height: 1.8; /* Espaciado entre líneas */
-    margin: 15px 0;
-    font-size: 1.1rem; /* Tamaño más moderno */
-}
-
-/* Botón de Regreso */
-button {
-    display: inline-block;
-    margin: 20px auto;
+/* Botón */
+.card button {
+    display: block;
+    width: 100%;
     padding: 10px 20px;
-    background-color: #4a148c; /* Fondo morado */
+    background-color: #ff7043;
     color: white;
     border: none;
-    border-radius: 8px; /* Bordes redondeados */
-    cursor: pointer;
+    border-radius: 8px;
     font-size: 1rem;
-    transition: background-color 0.3s, transform 0.2s;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #6a1b9a; /* Morado más claro */
-    transform: scale(1.05); /* Efecto de zoom al pasar */
+.card button:hover {
+    background-color: #ff8a65;
 }
