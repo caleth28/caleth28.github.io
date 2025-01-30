@@ -1,20 +1,35 @@
 const himnos = [
     {
         titulo: "Más Allá del Sol",
-        letra: "Aunque en esta vida\nNo tengo riquezas\nSé qué allá en la gloria\nTengo mi mansión..."
+        letra: `Aunque en esta vida
+No tengo riquezas
+Sé qué allá en la gloria
+Tengo mi mansión...
+        
+Más allá del Sol
+Más allá del Sol
+Yo tengo un hogar, bello hogar,
+Más allá del Sol.`
     },
     {
         titulo: "Sublime Gracia",
-        letra: "Sublime gracia del Señor\nQue a un pecador salvó...\nFui ciego mas hoy veo yo..."
+        letra: `Sublime gracia del Señor
+Que a un pecador salvó...
+Fui ciego mas hoy veo yo,
+Perdido y Él me halló...`
     },
     {
         titulo: "Cuan Grande es Él",
-        letra: "Señor mi Dios, al contemplar los cielos\nEl firmamento y las estrellas brillar..."
+        letra: `Señor mi Dios, al contemplar los cielos
+El firmamento y las estrellas brillar...
+Al oír tu voz en los potentes truenos,
+Y ver brillar el sol en su cenit...`
     }
 ];
 
 function cargarHimnos() {
     const container = document.querySelector(".container");
+    container.innerHTML = "";
 
     himnos.forEach((himno, index) => {
         const card = document.createElement("div");
@@ -22,8 +37,8 @@ function cargarHimnos() {
 
         card.innerHTML = `
             <h2>${himno.titulo}</h2>
-            <p>${himno.letra.split("\n").slice(0, 2).join("<br>")}...</p> <!-- Muestra un resumen -->
-            <button onclick="mostrarHimno(${index})">Ver Himno</button>
+            <p>${himno.letra.split("\n").slice(0, 2).join("<br>")}...</p> <!-- Resumen -->
+            <button onclick="mostrarHimno(${index})">Leer más</button>
         `;
 
         container.appendChild(card);
