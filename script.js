@@ -27,6 +27,18 @@ Y ver brillar el sol en su cenit...`
     }
 ];
 
+// Mostrar portada inicial
+function mostrarPortada() {
+    const container = document.querySelector(".container");
+    container.innerHTML = `
+        <div class="portada">
+            <h1>Cánticos Celestiales 2025</h1>
+            <button onclick="cargarHimnos()">Ingresar</button>
+        </div>
+    `;
+}
+
+// Cargar lista de himnos
 function cargarHimnos() {
     const container = document.querySelector(".container");
     container.innerHTML = "";
@@ -48,6 +60,7 @@ function cargarHimnos() {
     });
 }
 
+// Mostrar himno completo
 function mostrarHimno(index) {
     const container = document.querySelector(".container");
     const himno = himnos[index];
@@ -64,4 +77,5 @@ function mostrarHimno(index) {
     `;
 }
 
-document.addEventListener("DOMContentLoaded", cargarHimnos);
+// Mostrar portada al cargar la página
+document.addEventListener("DOMContentLoaded", mostrarPortada);
